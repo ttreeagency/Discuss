@@ -1,5 +1,5 @@
 <?php
-namespace Ttree\Discuss\Controller\Frontend;
+namespace Ttree\Discuss\Service;
 
 /*                                                                        *
  * This script belongs to the TYPO3 Flow package "Ttree.Discuss".         *
@@ -11,37 +11,32 @@ namespace Ttree\Discuss\Controller\Frontend;
  * The TYPO3 project - inspiring people to share!                         *
  *                                                                        */
 
-use Ttree\Discuss\Service\CommentService;
-use TYPO3\Eel\FlowQuery\FlowQuery;
 use TYPO3\Flow\Annotations as Flow;
-use TYPO3\Flow\Mvc\Controller\ActionController;
 use TYPO3\TYPO3CR\Domain\Model\Node;
+use TYPO3\TYPO3CR\Domain\Model\NodeInterface;
 use TYPO3\TYPO3CR\Domain\Model\NodeTemplate;
 
 /**
- * Controller for creating comment nodes
+ * A service to handle comments
  *
  * @Flow\Scope("singleton")
  */
-class CommentController extends ActionController {
-
-	/**
-	 * @Flow\Inject
-	 * @var CommentService
-	 */
-	protected $commentService;
+class CommentService {
 
 	/**
 	 * @param NodeTemplate $comment
 	 * @param Node $referenceNode
-	 * @return void
 	 */
-	public function createAction(NodeTemplate $comment, Node $referenceNode) {
-		$this->commentService->create($comment, $referenceNode);
-
-		$flowQuery = new FlowQuery(array($referenceNode));
-		$closestDocument = $flowQuery->closest('[instanceof Ttree.Discuss:CommentableMixin]')->get(0);
-		$this->redirect('show', 'Frontend\Node', 'TYPO3.Neos', array('node' => $closestDocument));
+	public function create(NodeTemplate $comment, Node $referenceNode) {
+		$comment = $referenceNode->createNodeFromTemplate($comment);
+		$this->emitCommentCreated($comment);
 	}
+
+	/**
+	 * @param NodeInterface $comment
+	 * @return void
+	 * @Flow\Signal
+	 */
+	protected function emitCommentCreated(NodeInterface $comment) {}
 
 }
