@@ -19,8 +19,27 @@ adding the following configuration in your `NodeTypes.yaml`:
 ```yaml
 'TYPO3.Neos.NodeTypes:Page':
   superTypes:
-    'Ttree.Discuss:Commentable': 'Ttree.Discuss:Commentable'
+    'Ttree.Discuss:CommentableMixin': 'Ttree.Discuss:CommentableMixin'
 ```
+
+After this change you need to run `flow node:repair` to create the missing ContentCollection to store the document comments.
+
+*Warning*: Later, if you add the `Ttree.Discuss:CommentableMixin` to a new Document node type, you must run `low node:repair`.
+
+Your are now ready to render the comments feed and the comment form in your document Fluid template:
+
+```html
+<div class="comment-footer">
+	{parts.comments -> f:format.raw()}
+</div>
+```
+
+Todos
+-----
+
+* Support to reply to a specific comment (thread)
+* Moderation
+* Neos backend module to have a better overview of the comments activity
 
 Acknowledgments
 ---------------

@@ -1,4 +1,4 @@
-'Ttree.Discuss:Commentable':
+'Ttree.Discuss:CommentableMixin':
   childNodes:
     comments:
       position: 'end 999'
@@ -26,4 +26,4 @@
 # Remove comment to enable Comments form on all page
 #'TYPO3.Neos.NodeTypes:Page':
 #  superTypes:
-#    'Ttree.Discuss:Commentable': 'Ttree.Discuss:Commentable'
+#    'Ttree.Discuss:CommentableMixin': 'Ttree.Discuss:CommentableMixin'
