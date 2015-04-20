@@ -16,7 +16,6 @@ use TYPO3\Eel\FlowQuery\FlowQuery;
 use TYPO3\Flow\Annotations as Flow;
 use TYPO3\Flow\Mvc\Controller\ActionController;
 use TYPO3\TYPO3CR\Domain\Model\Node;
-use TYPO3\TYPO3CR\Domain\Model\NodeTemplate;
 
 /**
  * Controller for creating comment nodes
@@ -32,12 +31,13 @@ class CommentController extends ActionController {
 	protected $commentService;
 
 	/**
-	 * @param NodeTemplate $comment
+	 * @param string $comment
+	 * @param string $nodeType
 	 * @param Node $referenceNode
 	 * @return void
 	 */
-	public function createAction(NodeTemplate $comment, Node $referenceNode) {
-		$this->commentService->create($comment, $referenceNode);
+	public function createAction($comment, $nodeType, Node $referenceNode) {
+		$this->commentService->create($comment, $nodeType, $referenceNode);
 
 		$flowQuery = new FlowQuery(array($referenceNode));
 		$closestDocument = $flowQuery->closest('[instanceof Ttree.Discuss:CommentableMixin]')->get(0);

@@ -15,6 +15,7 @@ use TYPO3\Flow\Annotations as Flow;
 use TYPO3\TYPO3CR\Domain\Model\Node;
 use TYPO3\TYPO3CR\Domain\Model\NodeInterface;
 use TYPO3\TYPO3CR\Domain\Model\NodeTemplate;
+use TYPO3\TYPO3CR\Domain\Service\NodeTypeManager;
 
 /**
  * A service to handle comments
@@ -24,11 +25,22 @@ use TYPO3\TYPO3CR\Domain\Model\NodeTemplate;
 class CommentService {
 
 	/**
-	 * @param NodeTemplate $comment
+	 * @Flow\Inject
+	 * @var NodeTypeManager
+	 */
+	protected $nodeTypeManager;
+
+	/**
+	 * @param string $comment
+	 * @param string $nodeType
 	 * @param Node $referenceNode
 	 */
-	public function create(NodeTemplate $comment, Node $referenceNode) {
-		$comment = $referenceNode->createNodeFromTemplate($comment);
+	public function create($comment, $nodeType, Node $referenceNode) {
+		$nodeTemplate = new NodeTemplate();
+		$nodeTemplate->setNodeType($this->nodeTypeManager->getNodeType($nodeType));
+		$nodeTemplate->setProperty('text', $comment);
+
+		$comment = $referenceNode->createNodeFromTemplate($nodeTemplate);
 		$this->emitCommentCreated($comment);
 	}
 
