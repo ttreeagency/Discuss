@@ -1,0 +1,29 @@
+'Ttree.Discuss:Commentable':
+  childNodes:
+    comments:
+      position: 'end 999'
+      type: 'TYPO3.Neos:ContentCollection'
+      constraints:
+        nodeTypes:
+          '*': FALSE
+          'Ttree.Discuss:Comment': TRUE
+
+'Ttree.Discuss:CommentForm':
+  superTypes: ['TYPO3.Neos:Content']
+  ui:
+    label: 'Comment Form'
+    icon: 'icon-comments'
+
+'Ttree.Discuss:Comment':
+  superTypes: ['TYPO3.Neos.NodeTypes:Text']
+  childNodes:
+    comments:
+      type: 'TYPO3.Neos:ContentCollection'
+  ui:
+    label: 'Comment'
+    icon: 'icon-comments'
+
+# Remove comment to enable Comments form on all page
+#'TYPO3.Neos.NodeTypes:Page':
+#  superTypes:
+#    'Ttree.Discuss:Commentable': 'Ttree.Discuss:Commentable'

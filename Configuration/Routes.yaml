@@ -1,0 +1,10 @@
+-
+  name: 'Create Node'
+  uriPattern: 'api/discuss'
+  defaults:
+    '@package':    'Ttree.Discuss'
+    '@controller': 'Frontend\Comment'
+    '@action':     'create'
+    '@format':     'html'
+  appendExceedingArguments: true
+  httpMethods: ['POST']

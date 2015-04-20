@@ -1,0 +1,7 @@
+{namespace neos=TYPO3\Neos\ViewHelpers}
+<f:form actionUri="/api/discuss" objectName="comment">
+	<f:form.hidden name="referenceNode" value="{referenceNode.path}" />
+	<f:form.hidden property="__nodeType" value="Ttree.Discuss:Comment" />
+	<f:form.textarea property="text" /><br />
+	<f:form.submit value="POST" />
+</f:form>

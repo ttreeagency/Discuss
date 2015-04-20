@@ -1,0 +1,7 @@
+prototype(TYPO3.Neos:Page) {
+	body {
+		parts {
+			comments = Ttree.Discuss:CommentFeed
+		}
+	}
+}

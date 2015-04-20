@@ -1,0 +1,23 @@
+privilegeTargets:
+
+  'TYPO3\Flow\Security\Authorization\Privilege\Method\MethodPrivilege':
+
+    'Ttree.Discuss:CreateCommentAccess':
+      matcher: 'method(Ttree\Discuss\Controller\Frontend\CommentController->createAction())'
+
+  'TYPO3\TYPO3CR\Security\Authorization\Privilege\Node\CreateNodePrivilege':
+
+    'Ttree.Discuss:CreateCommentNode':
+      matcher: 'createdNodeIsOfType("Evam.Intranet:Comment")'
+
+roles:
+
+  'TYPO3.Flow:Everybody':
+
+    privileges:
+      -
+        privilegeTarget: 'Ttree.Discuss:CreateCommentAccess'
+        permission: GRANT
+      -
+        privilegeTarget: 'Ttree.Discuss:CreateCommentNode'
+        permission: GRANT

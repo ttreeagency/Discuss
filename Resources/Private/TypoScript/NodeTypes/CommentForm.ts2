@@ -1,0 +1,3 @@
+prototype(Ttree.Discuss:CommentForm) {
+	referenceNode = ${q(documentNode).children('comments').get(0)}
+}

@@ -1,0 +1,14 @@
+{
+    "name": "ttree/discuss",
+    "type": "typo3-flow-package",
+    "description": "TYPO3 Neos package for Comments and Discussion in the Frontend, based on TYPO3CR (Content Repository)",
+    "require": {
+        "typo3/flow": "*",
+        "typo3/typo3cr": "*"
+    },
+    "autoload": {
+        "psr-0": {
+            "Ttree\\Discuss": "Classes"
+        }
+    }
+}

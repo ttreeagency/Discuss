@@ -1,0 +1,6 @@
+prototype(Ttree.Discuss:CommentFeed) < prototype(TYPO3.TypoScript:Array) {
+	comments = TYPO3.Neos:ContentCollection {
+		nodePath = 'comments'
+	}
+	form = Ttree.Discuss:CommentForm
+}

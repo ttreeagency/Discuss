@@ -1,0 +1,11 @@
+prototype(Ttree.Discuss:Comment) >
+prototype(Ttree.Discuss:Comment) < prototype(TYPO3.Neos.NodeTypes:Text) {
+	templatePath = 'resource://Ttree.Discuss/Private/Templates/NodeTypes/Comment.html'
+
+	text = ${q(node).property('text')}
+	creationDateTime = ${q(node).property('_creationDateTime')}
+
+	attributes {
+		class = 'comment'
+	}
+}
