@@ -8,7 +8,7 @@ The package is based on TYPO3CR.
 Installation
 ------------
 
-Run `composer require ttree/discuss @dev` in your distribution.
+Run `composer require ttree/discuss` in your distribution.
 
 Configuration
 -------------
