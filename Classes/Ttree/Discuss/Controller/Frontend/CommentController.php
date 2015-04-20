@@ -33,7 +33,7 @@ class CommentController extends ActionController {
 		$referenceNode->createNodeFromTemplate($comment);
 
 		$flowQuery = new FlowQuery(array($referenceNode));
-		$closestDocument = $flowQuery->closest('[instanceof Ttree.Discuss:Commentable]')->get(0);
+		$closestDocument = $flowQuery->closest('[instanceof Ttree.Discuss:CommentableMixin]')->get(0);
 		$this->redirect('show', 'Frontend\Node', 'TYPO3.Neos', array('node' => $closestDocument));
 	}
 
