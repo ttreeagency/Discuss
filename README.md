@@ -38,6 +38,7 @@ Todos
 -----
 
 * Support to reply to a specific comment (thread)
+* Add support for comment author
 * Moderation
 * Neos backend module to have a better overview of the comments activity
 
