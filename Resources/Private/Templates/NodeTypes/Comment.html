@@ -3,6 +3,6 @@
 <div{attributes -> f:format.raw()}>
 	<div class="comment__content">
 		{neos:contentElement.editable(property: 'text', node: node, tag: 'div', class: 'comment__content')}
-		<div class="comment__author">Publié par Cliff Bally, le <f:format.date forceLocale="fr_FR" localeFormatLength="full" localeFormatType="date">{creationDateTime}</f:format.date> à <f:format.date forceLocale="fr_FR" localeFormatLength="medium" localeFormatType="time">{creationDateTime}</f:format.date></div>
+		<div class="comment__author">Publié le <f:format.date forceLocale="fr_FR" localeFormatLength="full" localeFormatType="date">{creationDateTime}</f:format.date> à <f:format.date forceLocale="fr_FR" localeFormatLength="medium" localeFormatType="time">{creationDateTime}</f:format.date></div>
 	</div>
 </div>
