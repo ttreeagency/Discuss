@@ -26,6 +26,18 @@ After this change you need to run `flow node:repair` to create the missing Conte
 
 *Warning*: Later, if you add the `Ttree.Discuss:CommentableMixin` to a new Document node type, you must run `low node:repair`.
 
+This package add a new TypoScript segment in the `TYPO3.Neos:Page`:
+
+```
+prototype(TYPO3.Neos:Page) {
+	body {
+		parts {
+			comments = Ttree.Discuss:CommentFeed
+		}
+	}
+}
+```
+
 Your are now ready to render the comments feed and the comment form in your document Fluid template:
 
 ```html

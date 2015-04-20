@@ -5,6 +5,8 @@ prototype(Ttree.Discuss:Comment) < prototype(TYPO3.Neos.NodeTypes:Text) {
 	text = ${q(node).property('text')}
 	creationDateTime = ${q(node).property('_creationDateTime')}
 
+	author = 'Anonymous'
+
 	attributes {
 		class = 'comment'
 	}

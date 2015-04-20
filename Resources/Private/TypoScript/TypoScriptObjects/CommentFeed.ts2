@@ -1,6 +1,21 @@
-prototype(Ttree.Discuss:CommentFeed) < prototype(TYPO3.TypoScript:Array) {
+prototype(Ttree.Discuss:CommentFeed) < prototype(TYPO3.TypoScript:Template) {
+	templatePath = 'resource://Ttree.Discuss/Private/Templates/TypoScriptObjects/CommentFeed.html'
+
+	@override.commentingStatus = ${q(node).property('commentingStatus')}
+
+	attributes = TYPO3.TypoScript:Attributes {
+		class = ${'comment-feed comment-feed--status-' + commentingStatus}
+	}
+
+	closed = ${commentingStatus == 'closed' ? true : false}
+
+	hasComments = ${q(node).children('comments').find('[instanceof Ttree.Discuss:Comment]').count() > 0 ? true : false}
+
 	comments = TYPO3.Neos:ContentCollection {
 		nodePath = 'comments'
 	}
+
 	form = Ttree.Discuss:CommentForm
+
+	@if.notClosed = ${commentingStatus != 'disabled'}
 }

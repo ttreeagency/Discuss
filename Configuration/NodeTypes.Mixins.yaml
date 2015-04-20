@@ -1,0 +1,38 @@
+'Ttree.Discuss:CommentableMixin':
+  childNodes:
+    comments:
+      position: 'end 999'
+      type: 'TYPO3.Neos:ContentCollection'
+      constraints:
+        nodeTypes:
+          '*': FALSE
+          'Ttree.Discuss:Comment': TRUE
+  ui:
+    inspector:
+      groups:
+        comment:
+          label: 'Comments'
+          position: 30
+  properties:
+    commentingStatus:
+      type: 'string'
+      defaultValue: 'enabled'
+      ui:
+        label: 'Status'
+        reloadIfChanged: TRUE
+        inspector:
+          group: 'comment'
+          editor: 'TYPO3.Neos/Inspector/Editors/SelectBoxEditor'
+          editorOptions:
+            values:
+              'enabled':
+                label: 'Enabled'
+              'closed':
+                label: 'Closed'
+              'disabled':
+                label: 'Disabled'
+
+# Remove comment to enable Comments form on all page
+#'TYPO3.Neos.NodeTypes:Page':
+#  superTypes:
+#    'Ttree.Discuss:CommentableMixin': 'Ttree.Discuss:CommentableMixin'
